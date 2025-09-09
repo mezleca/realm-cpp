@@ -109,9 +109,9 @@ realm.write([&cars](){
 
 ## Getting Started
 
-See the detailed instructions in our [docs](https://www.mongodb.com/docs/atlas/device-sdks/sdk/cpp/).
+See the detailed instructions in our [docs](docs/README.md).
 
-The API reference is located [here](https://www.mongodb.com/docs/realm-sdks/cpp/latest/).
+The `cpprealm` API reference docs can be generated locally using Doxygen.
 
 ## Installing Realm
 
