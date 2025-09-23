@@ -7,7 +7,7 @@ These docs provide minimal-explanation code examples of how to work with the C++
 Use the SDK's open-source database - Realm - as an object store on the
 device.
 
-> **TIP:** See the [Quick Start](/docs/quick-start.md) to integrate
+> **TIP:** See the [Quick Start](/docs/guides/quick-start.md) to integrate
 > Realm into your project and get started.
 >
 
