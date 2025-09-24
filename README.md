@@ -8,7 +8,6 @@ This repository holds the source code for the C++ SDK Preview.
 * **Intuitive to Developers:** Realm’s object-oriented data model is simple to learn, doesn’t need an ORM, and lets you write less code.
 * **Designed for Offline Use:** Realm’s local database persists data on-disk, so apps work as well offline as they do online.
 * **Built for Mobile:** Realm is fully-featured, lightweight, and efficiently uses memory, disk space, and battery life.
-* **[Device Sync](https://www.mongodb.com/docs/atlas/app-services/sync/)**: Makes it simple to keep data in sync across users, devices, and your backend in real-time. [Get started for free](https://www.mongodb.com/docs/realm/sdk/cpp/sync/) and [create the cloud backend](http://mongodb.com/realm/register?utm_medium=github_atlas_CTA&utm_source=realm_cpp_github).
 
 ## Object-Oriented: Streamline Your Code
 
@@ -109,9 +108,9 @@ realm.write([&cars](){
 
 ## Getting Started
 
-See the detailed instructions in our [docs](https://www.mongodb.com/docs/atlas/device-sdks/sdk/cpp/).
+See the detailed instructions in our [docs](docs/README.md).
 
-The API reference is located [here](https://www.mongodb.com/docs/realm-sdks/cpp/latest/).
+The `cpprealm` API reference docs can be generated locally using Doxygen.
 
 ## Installing Realm
 

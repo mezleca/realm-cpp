@@ -1,4 +1,10 @@
 # Coffee Machine - Operated and powered by Atlas Device Sync
+> [!WARNING]
+> We announced the deprecation of Atlas Device Sync + Realm SDKs in September 2024. For more information please see:
+> - [SDK Deprecation](https://www.mongodb.com/docs/atlas/device-sdks/deprecation)
+> - [Device Sync Deprecation](https://www.mongodb.com/docs/atlas/app-services/sync/device-sync-deprecation)
+>
+
 
 The example extends the [Qt provided Coffee Machine](https://doc.qt.io/qt-6/qtdoc-demos-coffee-example.html) with [Atlas Device Sync](https://www.mongodb.com/docs/atlas/app-services/sync/) - essentially turning the coffee machine into a fleet of coffee machines that can be operated and controlled remotely by an operator. 
 
