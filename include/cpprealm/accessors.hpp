@@ -60,6 +60,28 @@ namespace realm {
         }
     };
     template <>
+    struct accessor<float> {
+        static inline void set(internal::bridge::obj& obj,
+                               const internal::bridge::col_key& key,
+                               const internal::bridge::realm&,
+                               const float& value) {
+            obj.set(key, value);
+        }
+    };
+    template <>
+    struct accessor<std::optional<float>> {
+        static inline void set(internal::bridge::obj& obj,
+                               const internal::bridge::col_key& key,
+                               const internal::bridge::realm&,
+                               const std::optional<float>& value) {
+            if (value) {
+                obj.set(key, *value);
+            } else {
+                obj.set_null(key);
+            }
+        }
+    };
+    template <>
     struct accessor<double> {
         static inline void set(internal::bridge::obj& obj,
                                const internal::bridge::col_key& key,
@@ -475,4 +497,3 @@ namespace realm {
     };
 } // realm
 #endif//CPPREALM_ACCESSORS_HPP
-

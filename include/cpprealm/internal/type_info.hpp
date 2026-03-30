@@ -201,6 +201,13 @@ namespace realm::internal::type_info {
         }
     };
     template <>
+    struct type_info<float> {
+        using internal_type = float;
+        static constexpr bridge::property::type type() {
+            return bridge::property::type::Float;
+        }
+    };
+    template <>
     struct type_info<double> {
         using internal_type = double;
         static constexpr bridge::property::type type() {

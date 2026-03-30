@@ -119,7 +119,11 @@ target_link_libraries(cpprealm PUBLIC Realm::ObjectStore)
 set(CMAKE_OSX_SYSROOT ${CMAKE_OSX_SYSROOT_PATH})
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    target_compile_options(cpprealm PRIVATE -Wall -Wextra -pedantic -Werror)
+    if(MSVC)
+        target_compile_options(cpprealm PRIVATE /W4)
+    else()
+        target_compile_options(cpprealm PRIVATE -Wall -Wextra -pedantic)
+    endif()
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9.0)

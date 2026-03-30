@@ -22,6 +22,7 @@
 #include <cpprealm/internal/bridge/utils.hpp>
 #include <string_view>
 #include <array>
+#include <cstdint>
 
 namespace realm {
     struct uuid;

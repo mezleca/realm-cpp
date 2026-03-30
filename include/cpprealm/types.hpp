@@ -125,11 +125,23 @@ namespace realm {
     static inline double deserialize(const double& v) {
         return v;
     }
+    static inline float serialize(const float& v, const std::optional<internal::bridge::realm>& = std::nullopt) {
+        return v;
+    }
+    static inline float deserialize(const float& v) {
+        return v;
+    }
 
     static inline std::optional<double> serialize(const std::optional<double>& v, const std::optional<internal::bridge::realm>& = std::nullopt) {
         return v;
     }
     static inline std::optional<double> deserialize(const std::optional<double>& v) {
+        return v;
+    }
+    static inline std::optional<float> serialize(const std::optional<float>& v, const std::optional<internal::bridge::realm>& = std::nullopt) {
+        return v;
+    }
+    static inline std::optional<float> deserialize(const std::optional<float>& v) {
         return v;
     }
 

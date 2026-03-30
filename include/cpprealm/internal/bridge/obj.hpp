@@ -112,6 +112,8 @@ namespace realm::internal::bridge {
     template <>
     [[nodiscard]] int64_t get(const obj&, const col_key& col_key);
     template <>
+    [[nodiscard]] float get(const obj&, const col_key& col_key);
+    template <>
     [[nodiscard]] double get(const obj&, const col_key& col_key);
     template <>
     [[nodiscard]] bool get(const obj&, const col_key& col_key);
@@ -148,6 +150,7 @@ namespace realm::internal::bridge {
         }
 
         void set(const col_key& col_key, const int64_t& value);
+        void set(const col_key& col_key, const float& value);
         void set(const col_key& col_key, const double& value);
         void set(const col_key& col_key, const std::string& value);
         void set(const col_key& col_key, const mixed& value);
@@ -176,6 +179,7 @@ namespace realm::internal::bridge {
         void set_list_values(const col_key& col_key, const std::vector<std::string>& values);
         void set_list_values(const col_key& col_key, const std::vector<bool>& values);
         void set_list_values(const col_key& col_key, const std::vector<int64_t>& values);
+        void set_list_values(const col_key& col_key, const std::vector<float>& values);
         void set_list_values(const col_key& col_key, const std::vector<double>& values);
         void set_list_values(const col_key& col_key, const std::vector<internal::bridge::uuid>& values);
         void set_list_values(const col_key& col_key, const std::vector<internal::bridge::object_id>& values);
@@ -186,6 +190,7 @@ namespace realm::internal::bridge {
 
         void set_list_values(const col_key& col_key, const std::vector<std::optional<int64_t>>& values);
         void set_list_values(const col_key& col_key, const std::vector<std::optional<bool>>& values);
+        void set_list_values(const col_key& col_key, const std::vector<std::optional<float>>& values);
         void set_list_values(const col_key& col_key, const std::vector<std::optional<double>>& values);
         void set_list_values(const col_key& col_key, const std::vector<std::optional<std::string>>& values);
         void set_list_values(const col_key& col_key, const std::vector<std::optional<obj_key>>& values);

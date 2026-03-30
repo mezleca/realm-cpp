@@ -24,6 +24,7 @@
 #include <memory>
 #include <optional>
 #include <cpprealm/internal/bridge/utils.hpp>
+#include <cstdint>
 
 namespace realm {
     class List;
