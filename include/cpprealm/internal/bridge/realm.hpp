@@ -24,6 +24,7 @@
 #include <functional>
 #include <map>
 #include <memory>
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <vector>

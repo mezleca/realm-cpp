@@ -135,6 +135,89 @@ namespace realm {
     };
 
     template<>
+    struct managed<float> : managed_base {
+        using managed<float>::managed_base::operator=;
+
+        managed_base& operator =(const float& v) {
+            this->m_obj->template set<float>(m_key, v);
+            return *this;
+        }
+
+        managed_base& operator =(const int& v) {
+            this->m_obj->template set<float>(m_key, static_cast<float>(v));
+            return *this;
+        }
+
+        [[nodiscard]] float detach() const {
+            return m_obj->template get<float>(m_key);
+        }
+
+        float operator *() const {
+            return detach();
+        }
+        [[nodiscard]] operator float() const {
+            return detach();
+        }
+
+        template<typename T>
+        std::enable_if_t< std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>, rbool> operator==(const T& rhs) const noexcept {
+            if (this->m_rbool_query) {
+                return this->m_rbool_query->equal(m_key, static_cast<double>(rhs));
+            }
+            return serialize(detach()) == rhs;
+        }
+
+        template<typename T>
+        std::enable_if_t< std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>, rbool> operator!=(const T& rhs) const noexcept {
+            if (this->m_rbool_query) {
+                return this->m_rbool_query->not_equal(m_key, static_cast<double>(rhs));
+            }
+            return serialize(detach()) != rhs;
+        }
+
+        template<typename T>
+        std::enable_if_t< std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>, rbool> operator>(const T& rhs) const noexcept {
+            if (this->m_rbool_query) {
+                return this->m_rbool_query->greater(m_key, static_cast<double>(rhs));
+            }
+            return serialize(detach()) > rhs;
+        }
+
+        template<typename T>
+        std::enable_if_t< std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>, rbool> operator<(const T& rhs) const noexcept {
+            if (this->m_rbool_query) {
+                return this->m_rbool_query->less(m_key, static_cast<double>(rhs));
+            }
+            return serialize(detach()) < rhs;
+        }
+
+        template<typename T>
+        std::enable_if_t< std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>, rbool> operator>=(const T& rhs) const noexcept {
+            if (this->m_rbool_query) {
+                return this->m_rbool_query->greater_equal(m_key, static_cast<double>(rhs));
+            }
+            return serialize(detach()) >= rhs;
+        }
+
+        template<typename T>
+        std::enable_if_t< std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>, rbool> operator<=(const T& rhs) const noexcept {
+            if (this->m_rbool_query) {
+                return this->m_rbool_query->less_equal(m_key, static_cast<double>(rhs));
+            }
+            return serialize(detach()) <= rhs;
+        }
+
+    private:
+        managed() = default;
+        managed(const managed&) = delete;
+        managed(managed &&) = delete;
+        managed& operator=(const managed&) = delete;
+        managed& operator=(managed&&) = delete;
+        template<typename, typename>
+        friend struct managed;
+    };
+
+    template<>
     struct managed<double> : managed_base {
         using managed<double>::managed_base::operator=;
 
@@ -360,6 +443,7 @@ namespace realm {
     }; \
 
 CPP_REALM_MANAGED_OPTIONAL_NUMERIC(int64_t)
+CPP_REALM_MANAGED_OPTIONAL_NUMERIC(float)
 CPP_REALM_MANAGED_OPTIONAL_NUMERIC(double)
 
     template<>

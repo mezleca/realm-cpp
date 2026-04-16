@@ -156,6 +156,10 @@ namespace realm::internal::bridge {
         return get_obj(o)->get<Int>(col_key);
     }
     template <>
+    float get(const obj& o, const col_key& col_key) {
+        return get_obj(o)->get<Float>(col_key);
+    }
+    template <>
     double get(const obj& o, const col_key& col_key) {
         return get_obj(o)->get<Double>(col_key);
     }
@@ -203,6 +207,9 @@ namespace realm::internal::bridge {
     }
     void obj::set(const col_key &col_key, const bool &value) {
         get_obj()->set<Bool>(col_key, value);
+    }
+    void obj::set(const col_key &col_key, const float &value) {
+        get_obj()->set<Float>(col_key, value);
     }
     void obj::set(const col_key &col_key, const double &value) {
         get_obj()->set<Double>(col_key, value);
@@ -258,6 +265,9 @@ namespace realm::internal::bridge {
         }
     }
     void obj::set_list_values(const col_key &col_key, const std::vector<int64_t> &values) {
+        get_obj()->set_list_values(col_key, values);
+    }
+    void obj::set_list_values(const col_key &col_key, const std::vector<float> &values) {
         get_obj()->set_list_values(col_key, values);
     }
     void obj::set_list_values(const col_key &col_key, const std::vector<double> &values) {
@@ -317,6 +327,9 @@ namespace realm::internal::bridge {
         get_obj()->set_list_values(col_key, values);
     }
     void obj::set_list_values(const col_key &col_key, const std::vector<std::optional<bool>> &values) {
+        get_obj()->set_list_values(col_key, values);
+    }
+    void obj::set_list_values(const col_key &col_key, const std::vector<std::optional<float>> &values) {
         get_obj()->set_list_values(col_key, values);
     }
     void obj::set_list_values(const col_key &col_key, const std::vector<std::optional<double>> &values) {

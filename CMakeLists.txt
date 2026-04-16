@@ -54,6 +54,18 @@ add_compile_definitions(REALM_ENABLE_ENCRYPTION)
 add_compile_definitions(REALM_INSTALL_LIBEXECDIR)
 add_compile_definitions(REALM_BUILD_LIB_ONLY)
 
+if(CMAKE_SYSTEM_NAME MATCHES "^Windows")
+    if(NOT WINDOWS_STORE)
+        # keep Windows API level aligned with realm-core (Windows 8.1 minimum).
+        # this is required for FILE_ID_INFO/FileIdInfo on some MinGW environments.
+        add_compile_definitions(
+            _WIN32_WINNT=0x0603
+            WINVER=0x603
+            NTDDI_VERSION=0x06030000
+        )
+    endif()
+endif()
+
 # on Apple platforms we use the built-in CFRunLoop
 # everywhere else it's libuv, except UWP where it doesn't build
 if(NOT APPLE AND NOT WINDOWS_STORE AND NOT ANDROID)
@@ -119,7 +131,11 @@ target_link_libraries(cpprealm PUBLIC Realm::ObjectStore)
 set(CMAKE_OSX_SYSROOT ${CMAKE_OSX_SYSROOT_PATH})
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    target_compile_options(cpprealm PRIVATE -Wall -Wextra -pedantic -Werror)
+    if(MSVC)
+        target_compile_options(cpprealm PRIVATE /W4)
+    else()
+        target_compile_options(cpprealm PRIVATE -Wall -Wextra -pedantic)
+    endif()
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9.0)

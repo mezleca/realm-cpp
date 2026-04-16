@@ -24,6 +24,7 @@
 #include <string>
 #include <vector>
 #include <cpprealm/internal/bridge/utils.hpp>
+#include <cstdint>
 
 namespace realm::object_store {
     class Dictionary;

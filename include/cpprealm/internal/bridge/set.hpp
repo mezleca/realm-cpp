@@ -24,6 +24,7 @@
 #include <set>
 #include <string>
 #include <cpprealm/internal/bridge/utils.hpp>
+#include <cstdint>
 
 namespace realm {
     namespace object_store {

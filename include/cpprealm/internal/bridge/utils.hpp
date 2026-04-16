@@ -27,13 +27,15 @@
 
 #ifdef _WIN32
 
-#include <WinSock2.h>
+#include <winsock2.h>
 #include <intrin.h>
-#include <BaseTsd.h>
+#include <basetsd.h>
 
 #undef max // collides with numeric_limits::max called later in this header file
 #undef min // collides with numeric_limits::min called later in this header file
+#ifdef _MSC_VER
 #include <safeint.h>
+#endif
 
 #endif // _WIN32
 
