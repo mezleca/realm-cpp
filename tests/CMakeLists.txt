@@ -3,12 +3,10 @@ project(cpprealm_tests)
 set(CMAKE_CXX_STANDARD 17)
 
 Include(FetchContent)
-FetchContent_Declare(
-        Catch2
-        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-        GIT_TAG        v3.0.1 # or a later release
-)
-FetchContent_MakeAvailable(Catch2)
+add_subdirectory(
+        "${CMAKE_CURRENT_LIST_DIR}/../Catch2"
+        "${CMAKE_CURRENT_BINARY_DIR}/Catch2-build"
+        EXCLUDE_FROM_ALL)
 
 if (DEFINED USES_CONAN OR DEFINED VCPKG_TOOLCHAIN)
     set(BUILD_FROM_PACKAGE_MANAGER ON)
