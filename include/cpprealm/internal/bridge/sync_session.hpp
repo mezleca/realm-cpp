@@ -32,7 +32,7 @@ namespace realm {
 
         struct sync_session {
 
-            enum class state {
+            enum class session_state {
                 active,
                 dying,
                 inactive,
@@ -40,17 +40,17 @@ namespace realm {
                 paused
             };
 
-            enum class connection_state {
+            enum class session_connection_state {
                 disconnected,
                 connecting,
                 connected
             };
 
             // The session's current state.
-            enum state state() const;
+            session_state get_state() const;
 
             // The session's current connection state.
-            enum connection_state connection_state() const;
+            session_connection_state get_connection_state() const;
 
             // Register a callback that will be called when all pending uploads have completed.
             // The callback is run asynchronously, and upon whatever thread the underlying sync client
@@ -106,7 +106,7 @@ namespace realm {
              Registers a callback that is invoked when the underlying sync session changes
              its connection state
              */
-            uint64_t observe_connection_change(std::function<void(enum connection_state old_state, enum connection_state new_state)>&& callback);
+            uint64_t observe_connection_change(std::function<void(enum session_connection_state old_state, enum session_connection_state new_state)>&& callback);
 
             /**
              Unregister a previously registered notifier. If the token is invalid,
